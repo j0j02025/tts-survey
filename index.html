@@ -99,6 +99,8 @@ const TEXTS = {
 const SEG_ZH = ["1 货币","2 数字","3 公式","4 化学","5 时间","6 英文缩写","7 语气"];
 const SEG_SHORT = {kk:["1 Валюта","2 Сандар","3 Формула","4 Химия","5 Уақыт","6 Ағылшын","7 Интонация"],
                    ru:["1 Валюта","2 Числа","3 Формула","4 Химия","5 Время","6 Английский","7 Интонация"]};
+const SEG_EN = ["Currency","Numbers","Formula","Chemistry","Time","English","Intonation"];
+const SC_EN = {5:"Great",4:"Good",3:"OK",2:"Poor",1:"Very poor"};
 const USE = [["能","Иә · Да","Yes"],["改一改能用","Аздап түзету · Небольшие правки","Small fixes"],["不能","Жоқ · Нет","No"]];
 const SC = {5:"Өте жақсы · Отлично",4:"Жақсы · Хорошо",3:"Орташа · Средне",2:"Нашар · Плохо",1:"Өте нашар · Оч. плохо"};
 const CLIPS = {kk:["K01","K03","K05","K07"], ru:["R01","R03","R05","R07"]};
@@ -143,9 +145,9 @@ function buildSection(lang){
       <div class="q">1. ${lang==="kk"?"Сабаққа жарай ма?":"Годится для урока?"} <span class="en">Usable in class?</span></div>
       <div class="opts" data-c="${c}" data-k="use">${USE.map(u=>`<div class="opt" data-v="${u[0]}">${lang==="kk"?u[1].split(" · ")[0]:u[1].split(" · ")[1]}<br><span class="en">${u[2]}</span></div>`).join("")}</div>
       <div class="q">2. ${lang==="kk"?"Жалпы баға":"Общая оценка"} <span class="en">Overall (5 = best)</span></div>
-      <div class="opts score" data-c="${c}" data-k="score">${[1,2,3,4,5].map(n=>`<div class="opt" data-v="${n}">${n}<small>${lang==="kk"?SC[n].split(" · ")[0]:SC[n].split(" · ")[1]}</small></div>`).join("")}</div>
+      <div class="opts score" data-c="${c}" data-k="score">${[1,2,3,4,5].map(n=>`<div class="opt" data-v="${n}">${n}<small>${lang==="kk"?SC[n].split(" · ")[0]:SC[n].split(" · ")[1]}<br><span class="en">${SC_EN[n]}</span></small></div>`).join("")}</div>
       <div class="q">3. ${lang==="kk"?"Қай бөлім қате оқылды? (міндетті емес)":"Какие части прочитаны с ошибками? (необязательно)"} <span class="en">Which parts were wrong? (optional)</span></div>
-      <div class="opts chips" data-c="${c}" data-k="wrong">${SEG_SHORT[lang].map((s,j)=>`<div class="opt" data-v="${j+1}">${s}</div>`).join("")}</div>
+      <div class="opts chips" data-c="${c}" data-k="wrong">${SEG_SHORT[lang].map((s,j)=>`<div class="opt" data-v="${j+1}">${s}<br><span class="en">${SEG_EN[j]}</span></div>`).join("")}</div>
       <div class="q">4. ${lang==="kk"?"Не дұрыс емес? Өз сөзіңізбен жазыңыз (міндетті емес)":"Что не так? Напишите своими словами (необязательно)"} <span class="en">What was wrong? Your own words (optional)</span></div>
       <textarea class="other" data-c="${c}" placeholder="${lang==="kk"?"Мысалы: 3-бөлімде «πr²» дұрыс оқылмады":"Например: в части 3 «πr²» прочитано неверно"}"></textarea>
     </div>`;
