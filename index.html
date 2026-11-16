@@ -134,7 +134,7 @@ function optGroup(el, multi, cur, onPick){
 function buildSection(lang){
   const sec = document.getElementById(lang==="kk"?"secKK":"secRU");
   const title = lang==="kk" ? "Қазақ тілі <span class='en'>Kazakh</span>" : "Русский язык <span class='en'>Russian</span>";
-  let h = `<div class="card"><div class="lab">${title}</div><details><summary>${lang==="kk"?"Мәтін (7 бөлім)":"Текст (7 частей)"} · Text</summary><ol>${TEXTS[lang].map(t=>`<li>${t}</li>`).join("")}</ol></details></div>`;
+  let h = `<div class="card"><div class="lab">${title}</div><details open><summary>${lang==="kk"?"Мәтін (7 бөлім)":"Текст (7 частей)"} · Text</summary><ol>${TEXTS[lang].map(t=>`<li>${t}</li>`).join("")}</ol></details></div>`;
   st.order[lang].forEach((c,i)=>{
     const L = "ABCD"[i];
     h += `<div class="card clip" id="clip-${c}">
