@@ -212,7 +212,7 @@ go.addEventListener("click", ()=>{
   err.style.display="none";
   const p = new URLSearchParams();
   const name = nameEl.value.trim();
-  p.set("prefill_老师", name);
+  p.set("prefill_Аты-жөні · Имя · Name", name);  // 表单预填认题目名(不是字段名「老师」),改题目名要同步改这里
   p.set("prefill_语言", {kk:"哈语",ru:"俄语",both:"两种"}[st.lang]);
   const raw = {name, lang:st.lang, order:{}, ans:{}, note:st.note||"", link_t:qs.get("t")||"", ts:new Date().toISOString(), ua:navigator.userAgent.slice(0,120)};
   langs().forEach(l=>{ raw.order[l]=st.order[l]; st.order[l].forEach(c=>{
